@@ -1,0 +1,27 @@
+
+
+DECLARE 
+  l_empid employee_info.empid%TYPE;
+  l_empname employee_info.empname%TYPE;
+  l_deptid employee_info.deptid%TYPE;
+  l_employee_category employee_info.employee_category%TYPE;
+  l_joining_dt employee_info.joining_dt%TYPE;
+  l_yrs_of_exp employee_info.yrs_of_exp%TYPE;
+  l_leave_category employee_info.leave_category%TYPE;
+  L_total_leaves emp_leave_info.total_leaves%TYPE;
+  
+BEGIN
+  SELECT
+    A.empid,empname,deptid,employee_category,joining_dt,yrs_of_exp,leave_category,total_leaves
+  INTO
+    l_empid,l_empname,l_deptid,l_employee_category,l_joining_dt,l_yrs_of_exp,l_leave_category,L_total_leaves
+  FROM
+    employee_info A, emp_leave_info B
+  WHERE
+    a.empid=b.empid AND empid = '&EMPID';
+  DBMS_OUTPUT.PUT_LINE(l_empid || ' : ' || l_empname||' '||l_deptid||' '|| l_employee_category||' '||l_joining_dt||' '||l_yrs_of_exp||' '||l_leave_category||' '||L_total_leaves);
+END;
+
+
+
+
