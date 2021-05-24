@@ -1,0 +1,15 @@
+select * from LEAVE_INFO;--2
+select * from SALARY_INFO;----------------1
+select * from DEPART_INFO;--2
+select * from EMPLOYEE_INFO;--1
+select * from EMP_LEAVE_INFO;--3
+select * from EMP_PAYROLL;-----------------2
+
+Select emp.emid, emp.empname, dep_info.deptid, dep_info.depname
+from emp join dep_info on emp.empid = dep_info.depid
+where dep_info.depid is not null
+
+select emp.empid,  emp.empname, emp_payroll.bpay
+from emp
+join emp_payroll on emp.empid =
+where emp_catogory = 'A'
