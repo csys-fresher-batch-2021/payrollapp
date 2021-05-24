@@ -1,0 +1,32 @@
+
+
+DECLARE
+    
+  l_employee_id employee_info.empid%TYPE;
+  l_employee_name employee_info.empname%TYPE;
+  l_Dept_Id Employee_Info.Deptid%TYPE;
+  l_employee_category employee_info.employee_category%TYPE;
+  l_joining_dt employee_info.joining_dt%TYPE;
+  l_dob employee_info.dob%TYPE;
+  l_yrs_of_exp employee_info.yrs_of_exp%TYPE;
+  l_leave_category employee_info.leave_category%TYPE;
+  l_location depart_info.location%TYPE;
+  l_total_leaves emp_leave_info.total_leaves%TYPE;
+  l_leave_type emp_leave_info.leave_type%TYPE;
+  l_basic salary_info.basic%TYPE;
+  
+BEGIN
+  SELECT
+    empid,empname,deptid,A.employee_category,A.joining_dt,A.dob,A.yrs_of_exp,A.leave_category,b.location,C.total_leaves,C.leave_type,D.basic
+  INTO
+    l_employee_id,l_employee_name,l_dept_id,l_employee_category,l_joining_dt,l_dob,l_yrs_of_exp,l_leave_category,l_location,l_total_leaves,l_leave_type,l_basic
+  FROM
+    employee_info A,depart_info B, emp_leave_info C, salary_info D
+  WHERE
+    a.employee_category=d.employee_category AND empid = '&EMPID';
+  DBMS_OUTPUT.PUT_LINE(l_employee_id || ' : ' || l_employee_name||' '||l_dept_id||' '|| l_employee_category||' '||l_joining_dt||' '||l_dob||' '||l_yrs_of_exp||' '||l_leave_category||' '||l_location||' '||l_total_leaves||' '||l_leave_type||' '||l_basic);
+END;
+
+
+
+
